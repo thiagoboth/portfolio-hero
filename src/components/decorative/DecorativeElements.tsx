@@ -1,132 +1,87 @@
-import type { DecorativeElementsProps } from '../../types';
-
 /**
  * Elementos decorativos do hero
- * Círculos azul e rosa como cores principais
- * Ícones com animações flutuantes suaves
+ * Conceito: Canvas de design em edição
+ * Elementos que parecem UI de editor de design
  */
-export function DecorativeElements({ isDark = false }: DecorativeElementsProps) {
+export function DecorativeElements() {
   return (
     <>
       {/* ========== CÍRCULO AZUL - Canto superior direito ========== */}
-      {/* Glow/blur do círculo azul */}
       <div
         className="
-          absolute -top-16 -right-16
+          absolute -top-20 -right-20 sm:-top-24 sm:-right-24
           w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80
-          bg-gradient-to-bl from-blue-400 via-blue-500 to-indigo-500
+          bg-blue-500
           rounded-full
-          opacity-50 blur-3xl
+          z-0
+        "
+        aria-hidden="true"
+      />
+
+      {/* ========== TRIÂNGULO ROSA - Canto inferior esquerdo ========== */}
+      <div
+        className="
+          absolute -bottom-2 -left-2
+          z-0
+        "
+        aria-hidden="true"
+      >
+        {/* Triângulo rosa (como play button / cursor) */}
+        <div
+          className="w-0 h-0
+            border-t-[30px] border-t-transparent
+            border-l-[45px] border-l-pink-500
+            border-b-[30px] border-b-transparent
+            sm:border-t-[40px] sm:border-l-[60px] sm:border-b-[40px]
+            rotate-[-45deg]
+            translate-x-2 translate-y-2
+          "
+        />
+      </div>
+
+      {/* ========== ELEMENTOS DE UI DO CANVAS ========== */}
+
+      {/* Ponto de seleção superior esquerdo */}
+      <div
+        className="
+          absolute top-32 left-4 sm:left-8
+          w-2 h-2 sm:w-2.5 sm:h-2.5
+          bg-blue-500 rounded-full
           animate-pulse
-          z-0
+          shadow-lg shadow-blue-500/50
         "
-        style={{ animationDuration: '4s' }}
+        style={{ animationDuration: '2s' }}
         aria-hidden="true"
       />
-      {/* Círculo azul principal - z-index baixo para ficar atrás do menu */}
+
+      {/* Ponto de seleção - canto */}
       <div
         className="
-          absolute -top-12 -right-12
-          w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64
-          bg-gradient-to-bl from-blue-400 to-blue-600
-          rounded-full
-          z-0
+          absolute top-48 right-8 sm:right-16
+          w-2 h-2 sm:w-2.5 sm:h-2.5
+          border-2 border-blue-500 bg-white rounded-sm
         "
         aria-hidden="true"
       />
 
-      {/* ========== CÍRCULO ROSA - Canto inferior esquerdo ========== */}
-      {/* Glow/blur do círculo rosa */}
+      {/* Linha guia vertical sutil */}
       <div
         className="
-          absolute -bottom-12 -left-12
-          w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64
-          bg-gradient-to-tr from-pink-400 via-rose-500 to-pink-600
-          rounded-full
-          opacity-40 blur-3xl
-          animate-pulse
-          z-0
-        "
-        style={{ animationDuration: '3s' }}
-        aria-hidden="true"
-      />
-      {/* Círculo rosa principal */}
-      <div
-        className="
-          absolute -bottom-8 -left-8
-          w-32 h-32 sm:w-44 sm:h-44 lg:w-56 lg:h-56
-          bg-gradient-to-tr from-pink-500 to-rose-500
-          rounded-full
-          z-0
+          absolute top-0 bottom-0 left-1/4
+          w-px bg-gray-200/50
+          pointer-events-none
         "
         aria-hidden="true"
       />
 
-      {/* ========== ELEMENTOS FLUTUANTES COM ANIMAÇÕES ========== */}
-      {/* Cruz superior esquerda - flutuação lenta */}
-      <div
-        className={`
-          absolute top-28 left-6 sm:left-10 lg:left-16
-          text-3xl sm:text-4xl lg:text-5xl font-extralight select-none
-          animate-float-slow
-          ${isDark ? 'text-gray-700' : 'text-gray-300'}
-        `}
-        aria-hidden="true"
-      >
-        +
-      </div>
-
-      {/* Cruz superior direita - flutuação média */}
-      <div
-        className={`
-          absolute top-40 right-20 sm:right-28 lg:right-40
-          text-2xl sm:text-3xl lg:text-4xl font-extralight select-none
-          animate-float-medium
-          ${isDark ? 'text-gray-600' : 'text-gray-400'}
-        `}
-        style={{ animationDelay: '1s' }}
-        aria-hidden="true"
-      >
-        +
-      </div>
-
-      {/* Cruz centro direita - flutuação rápida */}
-      <div
-        className={`
-          absolute top-1/2 right-6 sm:right-12 lg:right-20
-          text-xl sm:text-2xl lg:text-3xl select-none
-          animate-float-fast
-          ${isDark ? 'text-gray-700' : 'text-gray-300'}
-        `}
-        style={{ animationDelay: '0.5s' }}
-        aria-hidden="true"
-      >
-        +
-      </div>
-
-      {/* Cruz inferior esquerda */}
-      <div
-        className={`
-          absolute bottom-1/4 left-8 sm:left-16 lg:left-24
-          text-xl sm:text-2xl lg:text-3xl font-extralight select-none
-          animate-float-medium
-          ${isDark ? 'text-gray-600' : 'text-gray-400'}
-        `}
-        style={{ animationDelay: '1.5s' }}
-        aria-hidden="true"
-      >
-        +
-      </div>
-
-      {/* Cursor decorativo - flutuação com rotação */}
+      {/* Cursor de mouse decorativo */}
       <svg
-        className={`
-          absolute bottom-1/3 right-8 sm:right-16 lg:right-28
-          w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10
-          animate-float-rotate
-          ${isDark ? 'text-gray-700' : 'text-gray-300'}
-        `}
-        style={{ animationDelay: '2s' }}
+        className="
+          absolute bottom-1/3 right-6 sm:right-12
+          w-5 h-5 sm:w-6 sm:h-6
+          text-gray-400
+          animate-float-slow
+        "
         viewBox="0 0 24 24"
         fill="currentColor"
         aria-hidden="true"
@@ -134,43 +89,83 @@ export function DecorativeElements({ isDark = false }: DecorativeElementsProps) 
         <path d="M4 4l16 8-8 2-2 8z" />
       </svg>
 
-      {/* Elemento decorativo extra - círculo pequeno flutuante */}
+      {/* Elemento de texto placeholder */}
       <div
-        className={`
-          absolute top-1/3 left-10 sm:left-20 lg:left-32
-          w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5
-          rounded-full
-          animate-float-slow
-          ${isDark ? 'bg-gray-700' : 'bg-gray-300'}
-        `}
-        style={{ animationDelay: '0.8s' }}
-        aria-hidden="true"
-      />
-
-      {/* Elemento decorativo extra - losango */}
-      <div
-        className={`
-          absolute bottom-1/2 left-4 sm:left-8 lg:left-12
-          w-3 h-3 sm:w-4 sm:h-4
-          rotate-45
-          animate-float-fast
-          ${isDark ? 'bg-gray-700' : 'bg-gray-300'}
-        `}
-        style={{ animationDelay: '1.2s' }}
-        aria-hidden="true"
-      />
-
-      {/* Linha decorativa horizontal */}
-      <div
-        className={`
-          absolute top-2/3 right-16 sm:right-24 lg:right-36
-          w-8 sm:w-12 lg:w-16 h-0.5
+        className="
+          absolute top-1/2 right-4 sm:right-10
+          flex flex-col gap-1.5
           animate-float-medium
-          ${isDark ? 'bg-gray-700' : 'bg-gray-300'}
-        `}
-        style={{ animationDelay: '0.3s' }}
+        "
+        style={{ animationDelay: '1s' }}
+        aria-hidden="true"
+      >
+        <div className="w-8 sm:w-12 h-1 bg-gray-200 rounded" />
+        <div className="w-6 sm:w-8 h-1 bg-gray-200 rounded" />
+      </div>
+
+      {/* Bounding box corners - superior direito */}
+      <div
+        className="
+          absolute top-40 right-24 sm:right-32
+          w-3 h-3
+          border-t-2 border-r-2 border-gray-300
+        "
         aria-hidden="true"
       />
+
+      {/* Bounding box corners - inferior esquerdo */}
+      <div
+        className="
+          absolute bottom-40 left-20 sm:left-28
+          w-3 h-3
+          border-b-2 border-l-2 border-gray-300
+        "
+        aria-hidden="true"
+      />
+
+      {/* Plus icon flutuante (como adicionar elemento) */}
+      <div
+        className="
+          absolute top-2/3 left-6 sm:left-12
+          w-6 h-6 sm:w-8 sm:h-8
+          flex items-center justify-center
+          text-gray-300 text-xl sm:text-2xl
+          animate-float-fast
+          select-none
+        "
+        style={{ animationDelay: '0.5s' }}
+        aria-hidden="true"
+      >
+        +
+      </div>
+
+      {/* Régua/medida decorativa */}
+      <div
+        className="
+          absolute bottom-1/4 right-8 sm:right-16
+          flex items-center gap-1
+          animate-float-medium
+        "
+        style={{ animationDelay: '1.5s' }}
+        aria-hidden="true"
+      >
+        <div className="w-1 h-3 bg-gray-300 rounded" />
+        <div className="w-12 sm:w-16 h-0.5 bg-gray-300" />
+        <div className="w-1 h-3 bg-gray-300 rounded" />
+      </div>
+
+      {/* Layer indicator */}
+      <div
+        className="
+          absolute bottom-20 left-4 sm:left-8
+          flex flex-col gap-0.5
+        "
+        aria-hidden="true"
+      >
+        <div className="w-4 h-1 bg-blue-400 rounded-sm opacity-80" />
+        <div className="w-4 h-1 bg-gray-300 rounded-sm opacity-60" />
+        <div className="w-4 h-1 bg-gray-300 rounded-sm opacity-40" />
+      </div>
     </>
   );
 }

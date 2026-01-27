@@ -1,53 +1,48 @@
 import type { ProfilePhotoProps } from '../../types';
 
 /**
- * Componente de foto de perfil com borda gradiente
+ * Componente de foto de perfil com estilo canvas
+ * Borda tracejada como elemento de seleção
  * Mobile-first: tamanhos responsivos
  */
-export function ProfilePhoto({ src, alt, isDark = false }: ProfilePhotoProps) {
+export function ProfilePhoto({ src, alt }: ProfilePhotoProps) {
   return (
     <div className="
       relative mx-auto group
-      w-52 h-52
-      sm:w-60 sm:h-60
-      md:w-72 md:h-72
-      lg:w-80 lg:h-80
+      w-48 h-48
+      sm:w-56 sm:h-56
+      md:w-64 md:h-64
     ">
-      {/* Glow effect no hover */}
+      {/* Círculo tracejado externo (estilo seleção de canvas) */}
       <div
         className="
-          absolute inset-0 rounded-full
-          bg-gradient-to-br from-blue-500 to-indigo-500
-          opacity-0 group-hover:opacity-30
-          blur-xl transition-opacity duration-500
+          absolute -inset-4 sm:-inset-5
+          rounded-full
+          border-2 border-dashed border-gray-300
+          group-hover:border-blue-400
+          transition-colors duration-300
         "
         aria-hidden="true"
       />
 
-      {/* Círculo decorativo externo */}
-      <div
-        className={`
-          absolute -inset-3 sm:-inset-4 rounded-full border
-          ${isDark ? 'border-gray-700' : 'border-gray-200'}
-          group-hover:border-blue-300
-          transition-all duration-300
-          group-hover:scale-105
-        `}
-        aria-hidden="true"
-      />
+      {/* Pontos de controle nos cantos (estilo bounding box) */}
+      <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-2 h-2 bg-white border-2 border-blue-500 rounded-sm" aria-hidden="true" />
+      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-2 h-2 bg-white border-2 border-blue-500 rounded-sm" aria-hidden="true" />
+      <div className="absolute top-1/2 -left-5 -translate-y-1/2 w-2 h-2 bg-white border-2 border-blue-500 rounded-sm" aria-hidden="true" />
+      <div className="absolute top-1/2 -right-5 -translate-y-1/2 w-2 h-2 bg-white border-2 border-blue-500 rounded-sm" aria-hidden="true" />
 
-      {/* Borda principal com gradiente azul */}
+      {/* Borda principal azul sólida */}
       <div className="
         absolute inset-0 rounded-full
-        bg-gradient-to-br from-blue-500 via-blue-400 to-indigo-500
-        p-[3px] sm:p-1
-        group-hover:from-blue-400 group-hover:to-indigo-400
-        transition-all duration-300
+        border-[3px] border-blue-500
+        group-hover:border-blue-400
+        transition-colors duration-300
       ">
-        <div className={`
-          w-full h-full rounded-full p-[3px] sm:p-1
-          ${isDark ? 'bg-gray-900' : 'bg-white'}
-        `}>
+        <div className="
+          w-full h-full rounded-full
+          bg-white p-1
+          overflow-hidden
+        ">
           <img
             src={src}
             alt={alt}
@@ -57,6 +52,19 @@ export function ProfilePhoto({ src, alt, isDark = false }: ProfilePhotoProps) {
             "
           />
         </div>
+      </div>
+
+      {/* Indicador de dimensão (estilo editor) */}
+      <div
+        className="
+          absolute -bottom-10 left-1/2 -translate-x-1/2
+          text-[10px] text-gray-400 font-mono
+          opacity-0 group-hover:opacity-100
+          transition-opacity duration-300
+        "
+        aria-hidden="true"
+      >
+        256 × 256
       </div>
     </div>
   );
