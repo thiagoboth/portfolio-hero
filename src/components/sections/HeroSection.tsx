@@ -45,14 +45,12 @@ export function HeroSection({
       id="inicio"
       className="relative min-h-screen overflow-hidden bg-white"
     >
-      {/* ===== BARRA DE EDITOR NO TOPO (conceito canvas) ===== */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-lg z-50" />
 
       {/* Elementos decorativos - círculos e elementos de canvas */}
       <DecorativeElements />
 
-      {/* ===== HEADER ESTILO CANVAS ===== */}
-      <header className="relative z-40 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
+      {/* ===== HEADER - Z-INDEX ALTO PARA FICAR ACIMA DA BOLA AZUL ===== */}
+      <header className="relative z-50 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-6">
         {/* Logo/Nome com indicador de status */}
         <div className="flex items-start gap-2">
           <div className="flex flex-col gap-0.5 mt-1">
@@ -69,16 +67,24 @@ export function HeroSection({
           </div>
         </div>
 
-        {/* Botão Menu minimalista */}
+        {/* Botão Menu com animação nas barrinhas */}
         <button
           onClick={() => setIsMenuOpen(true)}
           className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors group"
           aria-label="Abrir menu"
         >
           <span className="text-sm font-medium">Menu</span>
-          <div className="flex flex-col gap-1.5">
-            <span className="w-6 h-0.5 bg-gray-900 transition-transform group-hover:translate-x-0.5" />
-            <span className="w-6 h-0.5 bg-gray-900 transition-transform group-hover:-translate-x-0.5" />
+          <div className="flex flex-col gap-1.5 overflow-hidden">
+            <span className="
+              w-6 h-0.5 bg-gray-900
+              transition-all duration-300 ease-out
+              group-hover:w-4 group-hover:bg-blue-500
+            " />
+            <span className="
+              w-6 h-0.5 bg-gray-900
+              transition-all duration-300 ease-out delay-75
+              group-hover:w-6 group-hover:bg-pink-500
+            " />
           </div>
         </button>
       </header>
@@ -95,39 +101,37 @@ export function HeroSection({
       <main className="
         relative z-10
         px-6 sm:px-8 md:px-12 lg:px-16
-        pt-4 sm:pt-8 md:pt-12
+        pt-4 sm:pt-6
         pb-12 sm:pb-16
         flex flex-col
         min-h-[calc(100vh-80px)]
         justify-center
       ">
-        {/* Container com alinhamento à esquerda */}
-        <div className="w-full max-w-2xl lg:max-w-4xl mx-auto">
+        {/* Container centralizado */}
+        <div className="w-full max-w-xl sm:max-w-2xl mx-auto text-center">
 
-          {/* ===== SAUDAÇÃO COM ELEMENTO DE CANVAS ===== */}
-          <div className="flex items-center gap-2 mb-4 animate-fade-in">
-            {/* X de fechar (elemento de UI) */}
-            <span className="text-yellow-500 text-lg font-light cursor-pointer hover:text-yellow-600 transition-colors select-none">
+          {/* ===== SAUDAÇÃO ===== */}
+          <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4 animate-fade-in">
+            {/* X decorativo */}
+            <span className="text-yellow-500 text-base sm:text-lg font-light cursor-pointer hover:text-yellow-600 hover:rotate-90 transition-all duration-300 select-none">
               ✕
             </span>
-            <p className="text-base sm:text-lg text-gray-500 font-light">
+            <p className="text-sm sm:text-base text-gray-500 font-light">
               {greeting}
             </p>
           </div>
 
-          {/* ===== NOME COM ESTILO OUTLINE E LINHA DE SELEÇÃO ===== */}
-          <div className="relative mb-6 sm:mb-8">
-            {/* Linha de seleção vertical (elemento de canvas) */}
-            <div className="absolute -left-4 sm:-left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-300 rounded-full" />
+          {/* ===== NOME COM ESTILO OUTLINE ===== */}
+          <div className="relative mb-4 sm:mb-6">
+            {/* Linha de seleção vertical */}
+            <div className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 h-3/4 w-1 bg-gradient-to-b from-blue-500 to-blue-300 rounded-full" />
 
-            <h1 className="text-left">
+            <h1>
               <span
                 className="
                   block
                   text-5xl sm:text-6xl md:text-7xl lg:text-8xl
                   font-black tracking-tighter leading-none
-                  text-transparent bg-clip-text
-                  stroke-text
                   animate-slide-up
                 "
                 style={{
@@ -142,9 +146,8 @@ export function HeroSection({
                   block
                   text-5xl sm:text-6xl md:text-7xl lg:text-8xl
                   font-black tracking-tighter leading-none
-                  mt-1 sm:mt-2
+                  mt-0 sm:mt-1
                   animate-slide-up
-                  relative
                 "
                 style={{
                   WebkitTextStroke: '2px #60A5FA',
@@ -153,20 +156,12 @@ export function HeroSection({
                 }}
               >
                 {lastName.toUpperCase()}
-                {/* Cursor decorativo ao lado do nome */}
-                <svg
-                  className="absolute -right-8 sm:-right-12 bottom-2 w-6 h-6 sm:w-8 sm:h-8 text-gray-400 animate-float-slow"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M4 4l16 8-8 2-2 8z" />
-                </svg>
               </span>
             </h1>
           </div>
 
           {/* ===== SUBTÍTULO COM TYPEWRITER ===== */}
-          <div className="text-left mb-10 sm:mb-14">
+          <div className="mb-8 sm:mb-10">
             <p className="text-lg sm:text-xl md:text-2xl">
               <TypewriterText
                 words={rotatingWords}
@@ -179,7 +174,7 @@ export function HeroSection({
                 {' '}{role}
               </span>
             </p>
-            <p className="text-sm sm:text-base text-gray-400 mt-2 font-light">
+            <p className="text-sm sm:text-base text-gray-400 mt-1 sm:mt-2 font-light">
               & durante a noite também...
             </p>
           </div>

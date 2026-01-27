@@ -2,7 +2,7 @@ import type { CTAButtonProps } from '../../types';
 
 /**
  * Botão CTA com estilo moderno
- * Gradiente azul-roxo com animações suaves
+ * Gradiente azul-roxo com efeito de brilho no hover
  */
 export function Button({
   children,
@@ -27,10 +27,10 @@ export function Button({
     primary: `
       bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600
       text-white
-      hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600
+      hover:from-blue-400 hover:via-blue-500 hover:to-indigo-500
       focus:ring-blue-500/50
-      shadow-lg shadow-blue-500/30
-      hover:shadow-xl hover:shadow-blue-500/40
+      shadow-lg shadow-blue-500/25
+      hover:shadow-2xl hover:shadow-blue-500/50
     `,
     secondary: `
       bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600
@@ -53,12 +53,23 @@ export function Button({
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]}`}
     >
+      {/* Glow effect no hover */}
+      <span className="
+        absolute inset-0
+        rounded-full
+        bg-white/20
+        opacity-0 group-hover:opacity-100
+        blur-md
+        transition-opacity duration-300
+      " />
+
       {/* Texto */}
       <span className="
         relative z-10
         flex items-center justify-center gap-2
-        transition-transform duration-300
+        transition-all duration-300
         group-hover:-translate-y-0.5
+        group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]
       ">
         {children}
       </span>
@@ -67,7 +78,7 @@ export function Button({
       <span className="
         absolute inset-0
         bg-gradient-to-r from-transparent via-white to-transparent
-        opacity-0 group-hover:opacity-20
+        opacity-0 group-hover:opacity-30
         -translate-x-full group-hover:translate-x-full
         transition-transform duration-700 ease-out
       " />
