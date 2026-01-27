@@ -1,0 +1,244 @@
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Brand Colors */
+  --color-brand-blue: #1E90FF;
+  --color-brand-blue-light: #4DA6FF;
+  --color-brand-blue-dark: #0066CC;
+  --color-brand-pink: #FF1493;
+  --color-brand-pink-light: #FF69B4;
+  --color-brand-pink-dark: #CC1177;
+
+  /* Custom Animations */
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+  --animate-slide-up: slideUp 0.6s ease-out forwards;
+  --animate-slide-down: slideDown 0.6s ease-out forwards;
+  --animate-scale-in: scaleIn 0.4s ease-out forwards;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-float-slow: floatSlow 6s ease-in-out infinite;
+  --animate-float-medium: floatMedium 4s ease-in-out infinite;
+  --animate-float-fast: floatFast 3s ease-in-out infinite;
+  --animate-float-rotate: floatRotate 8s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite;
+  --animate-typing: typing 0.5s steps(1) infinite;
+  --animate-blink: blink 1s ease-in-out infinite;
+  --animate-menu-pulse: menuPulse 2s ease-in-out infinite;
+
+  /* Box Shadows */
+  --shadow-glow-blue: 0 0 30px rgba(30, 144, 255, 0.4);
+  --shadow-glow-pink: 0 0 30px rgba(255, 20, 147, 0.4);
+
+  /* Keyframes */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Floating animations for decorative elements */
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(3deg); }
+    50% { transform: translateY(-8px) rotate(-2deg); }
+    75% { transform: translateY(-20px) rotate(2deg); }
+  }
+
+  @keyframes floatMedium {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(-12px) translateX(5px); }
+    66% { transform: translateY(-6px) translateX(-5px); }
+  }
+
+  @keyframes floatFast {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.1); }
+  }
+
+  @keyframes floatRotate {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(90deg); }
+    50% { transform: translateY(-5px) rotate(180deg); }
+    75% { transform: translateY(-15px) rotate(270deg); }
+  }
+
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(30, 144, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(30, 144, 255, 0.6); }
+  }
+
+  @keyframes typing {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes menuPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  /* Button shine effect */
+  @keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Button bounce on hover */
+  @keyframes buttonBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+}
+
+/* Reset e estilos base */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+/* Componentes customizados */
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 30px rgba(30, 144, 255, 0.3);
+  }
+
+  .shadow-glow-hover:hover {
+    box-shadow: 0 0 40px rgba(30, 144, 255, 0.5);
+  }
+}
+
+/* Utilitários customizados */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.6s ease-out forwards;
+  }
+
+  .animate-typing {
+    animation: typing 0.5s steps(1) infinite;
+  }
+
+  /* Floating animations for background icons */
+  .animate-float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: floatMedium 4s ease-in-out infinite;
+  }
+
+  .animate-float-fast {
+    animation: floatFast 3s ease-in-out infinite;
+  }
+
+  .animate-float-rotate {
+    animation: floatRotate 8s ease-in-out infinite;
+  }
+
+  /* Menu button animations */
+  .menu-btn {
+    position: relative;
+    z-index: 100;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .menu-btn:hover {
+    animation: menuPulse 0.6s ease-in-out;
+    transform: scale(1.05);
+  }
+
+  .menu-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Contact button enhanced animations */
+  .contact-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .contact-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: none;
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px rgba(30, 144, 255, 0.5);
+  }
+
+  .contact-btn:hover::after {
+    animation: shine 0.6s ease-out forwards;
+  }
+
+  .contact-btn:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 10px 25px -10px rgba(30, 144, 255, 0.4);
+    transition: all 0.1s ease-out;
+  }
+}
