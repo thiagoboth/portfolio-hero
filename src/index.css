@@ -3,6 +3,9 @@
 
 @import "tailwindcss";
 
+/* Dark mode com classe */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Tailwind v4 Theme Configuration */
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;

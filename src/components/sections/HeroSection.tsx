@@ -1,13 +1,11 @@
 import type { HeroSectionProps } from '../../types';
-import { useState } from 'react';
-import { HomeIndicator } from '../layout';
-import { Button, ProfilePhoto, TypewriterText, MobileMenu } from '../ui';
+import { Button, ProfilePhoto, TypewriterText } from '../ui';
 import { DecorativeElements } from '../decorative';
 
 /**
  * Hero Section - Seção principal da landing page
- * Conceito: Canvas de design em edição
- * Mobile-first com espaçamentos otimizados
+ * Design moderno com suporte a dark/light mode
+ * Responsivo: mobile-first
  */
 export function HeroSection({
   profileImage = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
@@ -17,8 +15,6 @@ export function HeroSection({
   ctaText = 'Entre em Contato',
   onCtaClick,
 }: HeroSectionProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   // Palavras que vão rotacionar com efeito typewriter
   const rotatingWords = [
     'programador',
@@ -32,179 +28,177 @@ export function HeroSection({
   const firstName = nameParts[0];
   const lastName = nameParts.slice(1).join(' ');
 
-  // Itens do menu
-  const menuItems = [
-    { label: 'Início', href: '#inicio' },
-    { label: 'Sobre mim', href: '#sobre' },
-    { label: 'Projetos', href: '#projetos' },
-    { label: 'Contato', href: '#contato' },
-  ];
-
   return (
-    <div
+    <section
       id="inicio"
-      className="relative min-h-screen overflow-hidden bg-white"
+      className="
+        relative min-h-screen overflow-hidden
+        pt-24 sm:pt-28 lg:pt-32
+        pb-12 sm:pb-16
+        bg-white dark:bg-gray-950
+        transition-colors duration-300
+      "
     >
-      {/* Grid dots de fundo - estilo canvas */}
+      {/* Background com gradiente sutil */}
       <div
-        className="absolute inset-0 canvas-grid opacity-30 pointer-events-none"
+        className="
+          absolute inset-0 pointer-events-none
+          bg-gradient-to-b from-blue-50/50 via-transparent to-transparent
+          dark:from-blue-950/20 dark:via-transparent dark:to-transparent
+        "
         aria-hidden="true"
       />
 
-      {/* Elementos decorativos - círculos e ícones de dev */}
+      {/* Elementos decorativos */}
       <DecorativeElements />
 
-      {/* ===== HEADER COM FUNDO BRANCO ===== */}
-      <header className="relative z-50 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5 bg-white">
-        {/* Logo/Nome com indicador de status */}
-        <div className="flex items-start gap-2 group/logo cursor-default">
-          <div className="flex flex-col gap-0.5 mt-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500 transition-colors duration-300 group-hover/logo:bg-emerald-400" />
-          </div>
-          <div className="transition-transform duration-300 group-hover/logo:translate-x-0.5">
-            <h2 className="text-sm sm:text-base font-bold text-gray-900 tracking-tight">
-              Thiago Botelho
-            </h2>
-            <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">
-              Desenvolvedor, UX/UI Designer
-            </p>
-          </div>
-        </div>
-
-        {/* Botão Menu com animação nas barrinhas */}
-        <button
-          onClick={() => setIsMenuOpen(true)}
-          className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors group"
-          aria-label="Abrir menu"
-        >
-          <span className="text-sm font-medium group-hover:text-blue-600 transition-colors duration-300">Menu</span>
-          <div className="flex flex-col gap-1.5 overflow-hidden">
-            <span className="
-              w-6 h-0.5 bg-gray-900
-              transition-all duration-500 ease-out origin-right
-              group-hover:w-4 group-hover:bg-blue-500 group-hover:translate-x-1
-            " />
-            <span className="
-              w-6 h-0.5 bg-gray-900
-              transition-all duration-500 ease-out delay-100 origin-left
-              group-hover:w-5 group-hover:bg-pink-500
-            " />
-          </div>
-        </button>
-      </header>
-
-      {/* Menu Mobile */}
-      <MobileMenu
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-        isDark={false}
-        items={menuItems}
-      />
-
-      {/* ===== CONTEÚDO PRINCIPAL ===== */}
+      {/* Conteúdo Principal */}
       <main className="
         relative z-10
         px-6 sm:px-8 md:px-12 lg:px-16
-        pt-4 sm:pt-6
-        pb-12 sm:pb-16
         flex flex-col
-        min-h-[calc(100vh-80px)]
+        min-h-[calc(100vh-120px)]
         justify-center
       ">
-        {/* Container centralizado */}
-        <div className="w-full max-w-xl sm:max-w-2xl mx-auto text-center">
+        <div className="w-full max-w-4xl mx-auto">
+          {/* Layout: Mobile (centralizado) / Desktop (split) */}
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Texto */}
+            <div className="text-center lg:text-left order-2 lg:order-1">
+              {/* Saudação */}
+              <div className="flex items-center justify-center lg:justify-start gap-2 mb-4 animate-fade-in">
+                <span className="
+                  w-8 h-[2px] rounded-full
+                  bg-gradient-to-r from-blue-500 to-pink-500
+                " />
+                <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 font-medium">
+                  {greeting}
+                </p>
+              </div>
 
-          {/* ===== SAUDAÇÃO ===== */}
-          <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4 animate-fade-in">
-            {/* X decorativo */}
-            <span className="text-yellow-500 text-base sm:text-lg font-light cursor-pointer hover:text-yellow-600 hover:rotate-90 transition-all duration-300 select-none">
-              ✕
-            </span>
-            <p className="text-sm sm:text-base text-gray-500 font-light">
-              {greeting}
-            </p>
-          </div>
+              {/* Nome */}
+              <h1 className="mb-6 animate-slide-up">
+                <span
+                  className="
+                    block
+                    text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+                    font-black tracking-tight leading-none
+                    bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900
+                    dark:from-white dark:via-gray-100 dark:to-white
+                    bg-clip-text text-transparent
+                  "
+                >
+                  {firstName}
+                </span>
+                <span
+                  className="
+                    block
+                    text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+                    font-black tracking-tight leading-none
+                    mt-1
+                    bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500
+                    bg-clip-text text-transparent
+                  "
+                >
+                  {lastName}
+                </span>
+              </h1>
 
-          {/* ===== NOME COM ESTILO OUTLINE ===== */}
-          <div className="relative mb-4 sm:mb-6">
-            {/* Linha de seleção vertical */}
-            <div className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 h-3/4 w-1 bg-gradient-to-b from-blue-500 to-blue-300 rounded-full" />
+              {/* Subtítulo com Typewriter */}
+              <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <p className="text-lg sm:text-xl md:text-2xl">
+                  <TypewriterText
+                    words={rotatingWords}
+                    typingSpeed={80}
+                    deletingSpeed={50}
+                    pauseDuration={2000}
+                    className="text-blue-500 dark:text-blue-400 font-bold"
+                  />
+                  <span className="text-gray-700 dark:text-gray-300 font-medium">
+                    {' '}{role}
+                  </span>
+                </p>
+                <p className="text-sm sm:text-base text-gray-400 dark:text-gray-500 mt-2 font-light">
+                  & durante a noite também...
+                </p>
+              </div>
 
-            <h1>
-              <span
-                className="
-                  block
-                  text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-                  font-black tracking-tighter leading-none
-                  animate-slide-up
-                "
-                style={{
-                  WebkitTextStroke: '2px #60A5FA',
-                  color: 'transparent',
-                }}
+              {/* CTA Button */}
+              <div
+                className="flex justify-center lg:justify-start animate-fade-in"
+                style={{ animationDelay: '0.4s' }}
               >
-                {firstName.toUpperCase()}
-              </span>
-              <span
-                className="
-                  block
-                  text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-                  font-black tracking-tighter leading-none
-                  mt-0 sm:mt-1
-                  animate-slide-up
-                "
-                style={{
-                  WebkitTextStroke: '2px #60A5FA',
-                  color: 'transparent',
-                  animationDelay: '0.1s',
-                }}
-              >
-                {lastName.toUpperCase()}
-              </span>
-            </h1>
+                <Button onClick={onCtaClick}>
+                  {ctaText}
+                </Button>
+              </div>
+            </div>
+
+            {/* Foto de Perfil */}
+            <div
+              className="
+                flex justify-center lg:justify-end
+                order-1 lg:order-2
+                animate-fade-in
+              "
+              style={{ animationDelay: '0.3s' }}
+            >
+              <div className="relative">
+                {/* Círculos decorativos atrás da foto */}
+                <div
+                  className="
+                    absolute -inset-4 sm:-inset-6
+                    bg-gradient-to-br from-blue-500/20 to-pink-500/20
+                    rounded-full blur-2xl
+                  "
+                  aria-hidden="true"
+                />
+                <div
+                  className="
+                    absolute -top-4 -right-4 w-24 h-24
+                    bg-blue-500/10 dark:bg-blue-400/10
+                    rounded-full blur-xl
+                  "
+                  aria-hidden="true"
+                />
+                <div
+                  className="
+                    absolute -bottom-4 -left-4 w-32 h-32
+                    bg-pink-500/10 dark:bg-pink-400/10
+                    rounded-full blur-xl
+                  "
+                  aria-hidden="true"
+                />
+                <ProfilePhoto
+                  src={profileImage}
+                  alt={`Foto de ${name}`}
+                  isDark={false}
+                />
+              </div>
+            </div>
           </div>
 
-          {/* ===== SUBTÍTULO COM TYPEWRITER ===== */}
-          <div className="mb-8 sm:mb-10">
-            <p className="text-lg sm:text-xl md:text-2xl">
-              <TypewriterText
-                words={rotatingWords}
-                typingSpeed={80}
-                deletingSpeed={50}
-                pauseDuration={2000}
-                className="text-pink-500 font-bold"
-              />
-              <span className="text-gray-900 font-medium">
-                {' '}{role}
+          {/* Scroll indicator */}
+          <div className="hidden sm:flex justify-center mt-16 lg:mt-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <a
+              href="#sobre"
+              className="
+                flex flex-col items-center gap-2
+                text-gray-400 dark:text-gray-500
+                hover:text-blue-500 dark:hover:text-blue-400
+                transition-colors
+              "
+              aria-label="Rolar para próxima seção"
+            >
+              <span className="text-xs uppercase tracking-widest">Scroll</span>
+              <span className="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
+                <span className="w-1 h-2 bg-current rounded-full animate-bounce" />
               </span>
-            </p>
-            <p className="text-sm sm:text-base text-gray-400 mt-1 sm:mt-2 font-light">
-              & durante a noite também...
-            </p>
-          </div>
-
-          {/* ===== FOTO DE PERFIL COM ESTILO CANVAS ===== */}
-          <div className="flex justify-center mb-10 sm:mb-14">
-            <ProfilePhoto
-              src={profileImage}
-              alt={`Foto de ${name}`}
-              isDark={false}
-            />
-          </div>
-
-          {/* ===== BOTÃO CTA ===== */}
-          <div className="flex justify-center">
-            <Button onClick={onCtaClick}>
-              {ctaText}
-            </Button>
+            </a>
           </div>
         </div>
       </main>
-
-      {/* Home Indicator (iOS) */}
-      <HomeIndicator isDark={false} />
-    </div>
+    </section>
   );
 }
 
