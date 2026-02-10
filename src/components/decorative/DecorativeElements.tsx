@@ -5,11 +5,11 @@
 export function DecorativeElements() {
   return (
     <>
-      {/* ========== CÍRCULO AZUL - Canto superior direito ========== */}
+      {/* ========== CÍRCULO AZUL - Cortado no topo direito (como no Figma) ========== */}
       <div
         className="
-          absolute -top-20 -right-20 sm:-top-24 sm:-right-24
-          w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72
+          absolute -top-8 -right-8 sm:-top-10 sm:-right-10
+          w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60
           bg-blue-500
           rounded-full
           z-0
@@ -29,13 +29,13 @@ export function DecorativeElements() {
         aria-hidden="true"
       />
 
-      {/* ========== ÍCONES DE DESENVOLVIMENTO WEB ========== */}
+      {/* ========== ÍCONES DE DESENVOLVIMENTO WEB (Sutis) ========== */}
 
       {/* Tag HTML < /> */}
       <div
         className="
           absolute top-28 left-4 sm:left-8 lg:left-16
-          text-gray-300 text-lg sm:text-xl
+          text-gray-300/25 text-lg sm:text-xl
           font-mono
           animate-float-slow
           select-none
@@ -49,7 +49,7 @@ export function DecorativeElements() {
       <div
         className="
           absolute top-1/3 right-4 sm:right-12 lg:right-20
-          text-gray-300 text-xl sm:text-2xl
+          text-gray-300/20 text-xl sm:text-2xl
           font-mono
           animate-float-medium
           select-none
@@ -60,27 +60,11 @@ export function DecorativeElements() {
         {'{'}...{'}'}
       </div>
 
-      {/* Cursor de mouse */}
-      <svg
-        className="
-          absolute bottom-1/3 right-6 sm:right-14 lg:right-24
-          w-5 h-5 sm:w-6 sm:h-6
-          text-gray-300
-          animate-float-slow
-        "
-        style={{ animationDelay: '1s' }}
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path d="M4 4l16 8-8 2-2 8z" />
-      </svg>
-
       {/* Ícone de código/terminal */}
       <div
         className="
           absolute bottom-1/4 left-6 sm:left-12 lg:left-20
-          text-gray-300 text-sm sm:text-base
+          text-gray-300/25 text-sm sm:text-base
           font-mono
           animate-float-fast
           select-none
@@ -95,7 +79,7 @@ export function DecorativeElements() {
       <div
         className="
           absolute top-1/2 left-2 sm:left-6
-          text-gray-300/60 text-2xl sm:text-3xl
+          text-gray-300/20 text-2xl sm:text-3xl
           font-light
           animate-float-medium
           select-none
@@ -110,7 +94,7 @@ export function DecorativeElements() {
       <div
         className="
           absolute top-40 right-8 sm:right-20
-          text-gray-300 text-2xl
+          text-gray-300/20 text-2xl
           font-mono
           animate-float-slow
           select-none
@@ -125,7 +109,7 @@ export function DecorativeElements() {
       <div
         className="
           absolute bottom-40 right-4 sm:right-10
-          text-gray-300/50 text-3xl
+          text-gray-300/15 text-3xl
           animate-float-fast
           select-none
         "
@@ -139,7 +123,7 @@ export function DecorativeElements() {
       <div
         className="
           absolute top-2/3 left-8 sm:left-16
-          text-gray-300/40 text-xl
+          text-gray-300/15 text-xl
           font-mono
           animate-float-medium
           select-none
@@ -154,7 +138,7 @@ export function DecorativeElements() {
       <div
         className="
           absolute bottom-1/3 left-4 sm:left-10
-          text-gray-300/50 text-base
+          text-gray-300/20 text-base
           font-mono
           animate-float-slow
           select-none
@@ -169,7 +153,7 @@ export function DecorativeElements() {
       <div
         className="
           absolute top-1/4 right-6 sm:right-16
-          text-gray-300/40 text-lg
+          text-gray-300/15 text-lg
           font-mono
           animate-float-fast
           select-none

@@ -45,19 +45,24 @@ export function HeroSection({
       id="inicio"
       className="relative min-h-screen overflow-hidden bg-white"
     >
+      {/* Grid dots de fundo - estilo canvas */}
+      <div
+        className="absolute inset-0 canvas-grid opacity-30 pointer-events-none"
+        aria-hidden="true"
+      />
 
-      {/* Elementos decorativos - círculos e elementos de canvas */}
+      {/* Elementos decorativos - círculos e ícones de dev */}
       <DecorativeElements />
 
-      {/* ===== HEADER - Z-INDEX ALTO PARA FICAR ACIMA DA BOLA AZUL ===== */}
-      <header className="relative z-50 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-6">
+      {/* ===== HEADER COM FUNDO BRANCO ===== */}
+      <header className="relative z-50 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5 bg-white">
         {/* Logo/Nome com indicador de status */}
-        <div className="flex items-start gap-2">
+        <div className="flex items-start gap-2 group/logo cursor-default">
           <div className="flex flex-col gap-0.5 mt-1">
             <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+            <span className="w-2.5 h-2.5 rounded-full bg-green-500 transition-colors duration-300 group-hover/logo:bg-emerald-400" />
           </div>
-          <div>
+          <div className="transition-transform duration-300 group-hover/logo:translate-x-0.5">
             <h2 className="text-sm sm:text-base font-bold text-gray-900 tracking-tight">
               Thiago Botelho
             </h2>
@@ -73,17 +78,17 @@ export function HeroSection({
           className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors group"
           aria-label="Abrir menu"
         >
-          <span className="text-sm font-medium">Menu</span>
+          <span className="text-sm font-medium group-hover:text-blue-600 transition-colors duration-300">Menu</span>
           <div className="flex flex-col gap-1.5 overflow-hidden">
             <span className="
               w-6 h-0.5 bg-gray-900
-              transition-all duration-300 ease-out
-              group-hover:w-4 group-hover:bg-blue-500
+              transition-all duration-500 ease-out origin-right
+              group-hover:w-4 group-hover:bg-blue-500 group-hover:translate-x-1
             " />
             <span className="
               w-6 h-0.5 bg-gray-900
-              transition-all duration-300 ease-out delay-75
-              group-hover:w-6 group-hover:bg-pink-500
+              transition-all duration-500 ease-out delay-100 origin-left
+              group-hover:w-5 group-hover:bg-pink-500
             " />
           </div>
         </button>

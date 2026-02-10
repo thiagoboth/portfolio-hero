@@ -117,6 +117,31 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-4px); }
   }
+
+  /* Animated cursor movement */
+  @keyframes cursorMove {
+    0% { top: 25%; left: 15%; }
+    15% { top: 35%; left: 45%; }
+    30% { top: 55%; left: 60%; }
+    45% { top: 40%; left: 75%; }
+    60% { top: 65%; left: 50%; }
+    75% { top: 50%; left: 25%; }
+    90% { top: 30%; left: 35%; }
+    100% { top: 25%; left: 15%; }
+  }
+
+  /* Cursor click effect */
+  @keyframes cursorClick {
+    0%, 85%, 100% { transform: scale(1); }
+    90% { transform: scale(0.9); }
+    95% { transform: scale(1.1); }
+  }
+
+  /* Rulers fade in */
+  @keyframes rulersFadeIn {
+    0% { opacity: 0; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
 }
 
 /* Reset e estilos base */
@@ -155,6 +180,12 @@
 
   .shadow-glow-hover:hover {
     box-shadow: 0 0 40px rgba(30, 144, 255, 0.5);
+  }
+
+  /* Canvas grid dots background */
+  .canvas-grid {
+    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
 
@@ -240,5 +271,15 @@
     transform: translateY(-2px) scale(0.98);
     box-shadow: 0 10px 25px -10px rgba(30, 144, 255, 0.4);
     transition: all 0.1s ease-out;
+  }
+
+  /* Animated cursor */
+  .animate-cursor-move {
+    animation: cursorMove 25s ease-in-out infinite, cursorClick 25s ease-in-out infinite;
+  }
+
+  /* Rulers fade in */
+  .animate-rulers-fade-in {
+    animation: rulersFadeIn 0.8s ease-out forwards;
   }
 }
