@@ -1,6 +1,5 @@
 import type { HeroSectionProps } from '../../types';
 import { Button, ProfilePhoto, TypewriterText } from '../ui';
-import { DecorativeElements } from '../decorative';
 
 /**
  * Hero Section - Seção principal da landing page
@@ -48,9 +47,6 @@ export function HeroSection({
         "
         aria-hidden="true"
       />
-
-      {/* Elementos decorativos */}
-      <DecorativeElements />
 
       {/* Conteúdo Principal */}
       <main className="
@@ -143,38 +139,11 @@ export function HeroSection({
               "
               style={{ animationDelay: '0.3s' }}
             >
-              <div className="relative">
-                {/* Círculos decorativos atrás da foto */}
-                <div
-                  className="
-                    absolute -inset-4 sm:-inset-6
-                    bg-gradient-to-br from-blue-500/20 to-pink-500/20
-                    rounded-full blur-2xl
-                  "
-                  aria-hidden="true"
-                />
-                <div
-                  className="
-                    absolute -top-4 -right-4 w-24 h-24
-                    bg-blue-500/10 dark:bg-blue-400/10
-                    rounded-full blur-xl
-                  "
-                  aria-hidden="true"
-                />
-                <div
-                  className="
-                    absolute -bottom-4 -left-4 w-32 h-32
-                    bg-pink-500/10 dark:bg-pink-400/10
-                    rounded-full blur-xl
-                  "
-                  aria-hidden="true"
-                />
-                <ProfilePhoto
-                  src={profileImage}
-                  alt={`Foto de ${name}`}
-                  isDark={false}
-                />
-              </div>
+              <ProfilePhoto
+                src={profileImage}
+                alt={`Foto de ${name}`}
+                isDark={false}
+              />
             </div>
           </div>
 
