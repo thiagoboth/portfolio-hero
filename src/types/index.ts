@@ -73,6 +73,7 @@ export interface CardProps {
   variant?: 'default' | 'elevated' | 'outlined';
   hover?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 // SectionHeader Component

@@ -26,7 +26,7 @@ interface UseFormReturn<T> {
  * useForm - Hook para gerenciamento de formulários
  * Inclui validação, estados de loading/success/error
  */
-export function useForm<T extends Record<string, string>>({
+export function useForm<T extends { [key: string]: string }>({
   initialValues,
   onSubmit,
   validate,

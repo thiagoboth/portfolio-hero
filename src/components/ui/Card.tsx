@@ -9,6 +9,7 @@ export function Card({
   variant = 'default',
   hover = true,
   className = '',
+  style,
 }: CardProps) {
   const baseStyles = `
     rounded-2xl
@@ -37,7 +38,7 @@ export function Card({
   };
 
   return (
-    <div className={`${baseStyles} ${variants[variant]} ${className}`}>
+    <div className={`${baseStyles} ${variants[variant]} ${className}`} style={style}>
       {children}
     </div>
   );
