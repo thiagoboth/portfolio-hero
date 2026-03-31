@@ -172,3 +172,41 @@ export interface FooterProps {
     email?: string;
   };
 }
+
+// ==========================================
+// HERO ENHANCEMENTS - Novos componentes
+// ==========================================
+
+// Status Badge
+export interface StatusBadgeProps {
+  status?: 'available' | 'partial' | 'unavailable';
+  text?: string;
+  className?: string;
+}
+
+// Tech Pill
+export interface TechItem {
+  name: string;
+  icon: string;
+}
+
+export interface TechPillProps {
+  tech: TechItem;
+  index?: number;
+  className?: string;
+}
+
+export interface TechStackProps {
+  technologies: TechItem[];
+  className?: string;
+}
+
+// Animated Text
+export interface AnimatedTextProps {
+  text: string;
+  as?: 'h1' | 'h2' | 'h3' | 'span' | 'p';
+  className?: string;
+  textClassName?: string;
+  delay?: number;
+  letterDelay?: number;
+}

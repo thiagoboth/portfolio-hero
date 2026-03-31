@@ -32,9 +32,9 @@ function App() {
       <HeroSection
         profileImage="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
         name="Thiago Botelho"
-        greeting="Olá mundo, eu sou"
-        role="durante o dia"
-        ctaText="Entre em Contato"
+        greeting="Prazer, eu sou"
+        role="para pessoas reais"
+        ctaText="Vamos conversar"
         onCtaClick={handleContactClick}
       />
 

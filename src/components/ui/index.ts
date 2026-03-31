@@ -8,3 +8,8 @@ export { Card } from './Card';
 export { SectionHeader } from './SectionHeader';
 export { Input, Textarea } from './Input';
 export { Tag } from './Tag';
+
+// Hero Enhancements
+export { StatusBadge } from './StatusBadge';
+export { TechPill, TechStack } from './TechPill';
+export { AnimatedText } from './AnimatedText';

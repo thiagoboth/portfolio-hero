@@ -25,26 +25,26 @@ export function Button({
 
   const variants = {
     primary: `
-      bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600
+      bg-gradient-to-r from-[#0183FF] via-[#3B9BFF] to-[#FF00E4]
       text-white
-      hover:from-blue-400 hover:via-blue-500 hover:to-indigo-500
-      focus:ring-blue-500/50
-      shadow-lg shadow-blue-500/25
-      hover:shadow-2xl hover:shadow-blue-500/50
+      hover:from-[#1C8DFF] hover:via-[#5CAEFF] hover:to-[#FF3FED]
+      focus:ring-[#0183FF]/40
+      shadow-[0_18px_45px_-22px_rgba(1,131,255,0.55)]
+      hover:shadow-[0_22px_55px_-26px_rgba(255,0,228,0.45)]
     `,
     secondary: `
-      bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600
+      bg-gradient-to-r from-[#FF00E4] via-[#FF4AED] to-[#FF7AF4]
       text-white
-      hover:from-pink-600 hover:via-rose-600 hover:to-pink-700
-      focus:ring-pink-500/50
-      shadow-lg shadow-pink-500/30
+      hover:from-[#FF1FE8] hover:via-[#FF6CF2] hover:to-[#FF9AF7]
+      focus:ring-[#FF00E4]/40
+      shadow-[0_18px_45px_-22px_rgba(255,0,228,0.45)]
     `,
     outline: `
       bg-transparent
-      border-2 border-blue-500
-      text-blue-500
-      hover:bg-blue-500 hover:text-white
-      focus:ring-blue-500/50
+      border-2 border-[#0183FF]
+      text-[#0183FF]
+      hover:bg-[#0183FF] hover:text-white
+      focus:ring-[#0183FF]/40
     `,
   };
 
