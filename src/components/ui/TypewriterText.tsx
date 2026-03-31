@@ -65,7 +65,7 @@ export function TypewriterText({
       <span
         className="
           inline-block w-[2px] h-[1.1em] ml-[2px]
-          bg-blue-500
+          bg-current
           animate-blink
           align-middle
         "

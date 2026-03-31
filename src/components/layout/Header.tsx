@@ -1,111 +1,140 @@
 import { useState } from 'react';
-import { ThemeToggle, MobileMenu } from '../ui';
+import type { MenuItem } from '../../types';
+import { MobileMenu, ThemeToggle } from '../ui';
 
 interface HeaderProps {
   isDark: boolean;
   onToggleTheme: () => void;
 }
 
-// Itens do menu
-const menuItems = [
+// Links de navegação
+const navItems: MenuItem[] = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Sobre mim', href: '#sobre' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Projetos', href: '#projetos' },
+  { label: 'Contato', href: '#contato' },
 ];
 
 /**
- * Header com logo, toggle de tema e menu
- * Mobile-first com funcionalidades completas
+ * Header - Cabeçalho responsivo fixo
+ * Mobile: Logo + Theme Toggle + Hamburger
+ * Desktop: Logo + Nav Links + Theme Toggle
  */
 export function Header({ isDark, onToggleTheme }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
-      <header className={`
-        relative z-50
-        flex items-center justify-between
-        px-5 py-4
-        sm:px-8 sm:py-5
-        ${isDark ? 'bg-gray-900/95' : 'bg-white/95'}
-        backdrop-blur-sm
-        transition-colors duration-300
-        animate-slide-down
-      `}>
-        {/* Logo */}
-        <a
-          href="#inicio"
-          className="flex items-center gap-2 sm:gap-3 group"
-        >
-          <div className="
-            w-9 h-9 sm:w-10 sm:h-10
-            bg-gradient-to-br from-blue-500 to-indigo-600
-            rounded-full
-            flex items-center justify-center
-            transform group-hover:scale-110 transition-transform duration-300
-            shadow-lg shadow-blue-500/20
-          ">
-            <span className="text-white font-bold text-xs sm:text-sm">TB</span>
-          </div>
-          <div className="hidden sm:block">
-            <p className={`
-              text-xs uppercase tracking-wider
-              ${isDark ? 'text-gray-400' : 'text-gray-500'}
-            `}>
-              Dev & Designer
-            </p>
-          </div>
-        </a>
-
-        {/* Ações do Header */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Toggle Dark/Light Mode */}
-          <ThemeToggle isDark={isDark} onToggle={onToggleTheme} />
-
-          {/* Botão Menu - z-index muito alto para ficar acima de tudo */}
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className={`
-              menu-btn
-              relative z-[100]
-              flex items-center gap-3
-              px-5 py-3 sm:px-6 sm:py-3.5
-              rounded-full
-              border-2
-              backdrop-blur-md
-              shadow-xl
-              transition-all duration-300 ease-out
-              hover:scale-105
-              active:scale-95
-              ${isDark
-                ? 'text-white bg-gray-800/90 border-gray-600 hover:bg-gray-700 hover:border-blue-400 hover:shadow-blue-500/30'
-                : 'text-gray-900 bg-white/90 border-gray-300 hover:bg-white hover:border-blue-500 hover:shadow-blue-500/40'
-              }
-            `}
-            aria-label="Abrir menu de navegação"
+      <header
+        className={`
+          fixed top-0 left-0 right-0 z-50
+          px-5 py-4 sm:px-8 lg:px-12
+          backdrop-blur-md
+          border-b
+          transition-colors duration-300
+          ${isDark
+            ? 'bg-gray-950/90 border-gray-800'
+            : 'bg-white/90 border-gray-200'
+          }
+        `}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Logo */}
+          <a
+            href="#inicio"
+            className="flex items-center gap-3 group"
           >
-            <span className="text-sm sm:text-base font-bold tracking-wide">Menu</span>
-            <div className="flex flex-col gap-1.5 transition-all duration-300">
-              <span className={`
-                w-5 sm:w-6 h-0.5 rounded-full
-                transition-all duration-300
-                ${isDark ? 'bg-blue-400' : 'bg-blue-500'}
-              `} />
-              <span className={`
-                w-5 sm:w-6 h-0.5 rounded-full
-                transition-all duration-300
-                ${isDark ? 'bg-pink-400' : 'bg-pink-500'}
-              `} />
+            <div className="flex flex-col gap-0.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500 group-hover:bg-emerald-400 transition-colors" />
             </div>
-          </button>
+            <div>
+              <span
+                className={`
+                  text-base sm:text-lg font-bold tracking-tight
+                  transition-colors
+                  ${isDark ? 'text-white' : 'text-gray-900'}
+                `}
+              >
+                Thiago Botelho
+              </span>
+              <p
+                className={`
+                  text-[10px] sm:text-xs uppercase tracking-widest
+                  ${isDark ? 'text-gray-400' : 'text-gray-500'}
+                `}
+              >
+                Dev & Designer
+              </p>
+            </div>
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`
+                  px-4 py-2
+                  text-sm font-medium
+                  rounded-lg
+                  transition-all duration-200
+                  ${isDark
+                    ? 'text-gray-300 hover:text-white hover:bg-white/10'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                  }
+                `}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Right side: Theme Toggle + Mobile Menu Button */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Theme Toggle */}
+            <ThemeToggle isDark={isDark} onToggle={onToggleTheme} />
+
+            {/* Mobile Menu Button - only on mobile/tablet */}
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className={`
+                lg:hidden
+                flex flex-col gap-1.5 p-2.5
+                rounded-lg
+                transition-colors
+                ${isDark
+                  ? 'hover:bg-white/10'
+                  : 'hover:bg-gray-100'
+                }
+              `}
+              aria-label="Abrir menu"
+            >
+              <span
+                className={`
+                  w-6 h-0.5 rounded-full transition-colors
+                  ${isDark ? 'bg-white' : 'bg-gray-900'}
+                `}
+              />
+              <span
+                className={`
+                  w-4 h-0.5 rounded-full transition-colors ml-auto
+                  ${isDark ? 'bg-white' : 'bg-gray-900'}
+                `}
+              />
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Menu Mobile/Desktop */}
+      {/* Mobile Menu */}
       <MobileMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         isDark={isDark}
-        items={menuItems}
+        items={navItems}
       />
     </>
   );

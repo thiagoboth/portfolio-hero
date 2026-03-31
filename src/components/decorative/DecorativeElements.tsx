@@ -1,176 +1,172 @@
-import type { DecorativeElementsProps } from '../../types';
-
 /**
  * Elementos decorativos do hero
- * Círculos azul e rosa como cores principais
- * Ícones com animações flutuantes suaves
+ * Conceito: Canvas de design com ícones de desenvolvimento web
+ * Suporta dark/light mode
  */
-export function DecorativeElements({ isDark = false }: DecorativeElementsProps) {
+export function DecorativeElements() {
   return (
     <>
-      {/* ========== CÍRCULO AZUL - Canto superior direito ========== */}
-      {/* Glow/blur do círculo azul */}
+      {/* ========== CÍRCULO AZUL - Cortado no topo direito ========== */}
       <div
         className="
-          absolute -top-16 -right-16
-          w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80
-          bg-gradient-to-bl from-blue-400 via-blue-500 to-indigo-500
-          rounded-full
-          opacity-50 blur-3xl
-          animate-pulse
-          z-0
-        "
-        style={{ animationDuration: '4s' }}
-        aria-hidden="true"
-      />
-      {/* Círculo azul principal - z-index baixo para ficar atrás do menu */}
-      <div
-        className="
-          absolute -top-12 -right-12
-          w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64
-          bg-gradient-to-bl from-blue-400 to-blue-600
+          absolute -top-8 -right-8 sm:-top-10 sm:-right-10
+          w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60
+          bg-blue-500 dark:bg-blue-600
           rounded-full
           z-0
+          opacity-80 dark:opacity-60
         "
         aria-hidden="true"
       />
 
       {/* ========== CÍRCULO ROSA - Canto inferior esquerdo ========== */}
-      {/* Glow/blur do círculo rosa */}
       <div
         className="
-          absolute -bottom-12 -left-12
-          w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64
-          bg-gradient-to-tr from-pink-400 via-rose-500 to-pink-600
-          rounded-full
-          opacity-40 blur-3xl
-          animate-pulse
-          z-0
-        "
-        style={{ animationDuration: '3s' }}
-        aria-hidden="true"
-      />
-      {/* Círculo rosa principal */}
-      <div
-        className="
-          absolute -bottom-8 -left-8
-          w-32 h-32 sm:w-44 sm:h-44 lg:w-56 lg:h-56
-          bg-gradient-to-tr from-pink-500 to-rose-500
+          absolute -bottom-10 -left-10 sm:-bottom-12 sm:-left-12
+          w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44
+          bg-gradient-to-tr from-pink-500 to-rose-400
+          dark:from-pink-600 dark:to-rose-500
           rounded-full
           z-0
+          opacity-80 dark:opacity-60
         "
         aria-hidden="true"
       />
 
-      {/* ========== ELEMENTOS FLUTUANTES COM ANIMAÇÕES ========== */}
-      {/* Cruz superior esquerda - flutuação lenta */}
+      {/* ========== ÍCONES DE DESENVOLVIMENTO WEB (Sutis) ========== */}
+
+      {/* Tag HTML < /> */}
       <div
-        className={`
-          absolute top-28 left-6 sm:left-10 lg:left-16
-          text-3xl sm:text-4xl lg:text-5xl font-extralight select-none
+        className="
+          absolute top-28 left-4 sm:left-8 lg:left-16
+          text-gray-400/30 dark:text-gray-600/40 text-lg sm:text-xl
+          font-mono
           animate-float-slow
-          ${isDark ? 'text-gray-700' : 'text-gray-300'}
-        `}
+          select-none
+        "
         aria-hidden="true"
       >
-        +
+        &lt;/&gt;
       </div>
 
-      {/* Cruz superior direita - flutuação média */}
+      {/* Chaves { } */}
       <div
-        className={`
-          absolute top-40 right-20 sm:right-28 lg:right-40
-          text-2xl sm:text-3xl lg:text-4xl font-extralight select-none
+        className="
+          absolute top-1/3 right-4 sm:right-12 lg:right-20
+          text-gray-400/25 dark:text-gray-600/35 text-xl sm:text-2xl
+          font-mono
           animate-float-medium
-          ${isDark ? 'text-gray-600' : 'text-gray-400'}
-        `}
-        style={{ animationDelay: '1s' }}
-        aria-hidden="true"
-      >
-        +
-      </div>
-
-      {/* Cruz centro direita - flutuação rápida */}
-      <div
-        className={`
-          absolute top-1/2 right-6 sm:right-12 lg:right-20
-          text-xl sm:text-2xl lg:text-3xl select-none
-          animate-float-fast
-          ${isDark ? 'text-gray-700' : 'text-gray-300'}
-        `}
+          select-none
+        "
         style={{ animationDelay: '0.5s' }}
         aria-hidden="true"
       >
-        +
+        {'{'}...{'}'}
       </div>
 
-      {/* Cruz inferior esquerda */}
+      {/* Ícone de código/terminal */}
       <div
-        className={`
-          absolute bottom-1/4 left-8 sm:left-16 lg:left-24
-          text-xl sm:text-2xl lg:text-3xl font-extralight select-none
-          animate-float-medium
-          ${isDark ? 'text-gray-600' : 'text-gray-400'}
-        `}
+        className="
+          absolute bottom-1/4 left-6 sm:left-12 lg:left-20
+          text-gray-400/30 dark:text-gray-600/40 text-sm sm:text-base
+          font-mono
+          animate-float-fast
+          select-none
+        "
         style={{ animationDelay: '1.5s' }}
         aria-hidden="true"
       >
-        +
+        {'>'}_
       </div>
 
-      {/* Cursor decorativo - flutuação com rotação */}
-      <svg
-        className={`
-          absolute bottom-1/3 right-8 sm:right-16 lg:right-28
-          w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10
-          animate-float-rotate
-          ${isDark ? 'text-gray-700' : 'text-gray-300'}
-        `}
-        style={{ animationDelay: '2s' }}
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path d="M4 4l16 8-8 2-2 8z" />
-      </svg>
-
-      {/* Elemento decorativo extra - círculo pequeno flutuante */}
+      {/* Hashtag/ID selector */}
       <div
-        className={`
-          absolute top-1/3 left-10 sm:left-20 lg:left-32
-          w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5
-          rounded-full
-          animate-float-slow
-          ${isDark ? 'bg-gray-700' : 'bg-gray-300'}
-        `}
+        className="
+          absolute top-1/2 left-2 sm:left-6
+          text-gray-400/25 dark:text-gray-600/35 text-2xl sm:text-3xl
+          font-light
+          animate-float-medium
+          select-none
+        "
         style={{ animationDelay: '0.8s' }}
         aria-hidden="true"
-      />
+      >
+        #
+      </div>
 
-      {/* Elemento decorativo extra - losango */}
+      {/* Ponto e vírgula */}
       <div
-        className={`
-          absolute bottom-1/2 left-4 sm:left-8 lg:left-12
-          w-3 h-3 sm:w-4 sm:h-4
-          rotate-45
-          animate-float-fast
-          ${isDark ? 'bg-gray-700' : 'bg-gray-300'}
-        `}
-        style={{ animationDelay: '1.2s' }}
+        className="
+          absolute top-40 right-8 sm:right-20
+          text-gray-400/25 dark:text-gray-600/35 text-2xl
+          font-mono
+          animate-float-slow
+          select-none
+        "
+        style={{ animationDelay: '2s' }}
         aria-hidden="true"
-      />
+      >
+        ;
+      </div>
 
-      {/* Linha decorativa horizontal */}
+      {/* Asterisco/pointer */}
       <div
-        className={`
-          absolute top-2/3 right-16 sm:right-24 lg:right-36
-          w-8 sm:w-12 lg:w-16 h-0.5
-          animate-float-medium
-          ${isDark ? 'bg-gray-700' : 'bg-gray-300'}
-        `}
+        className="
+          absolute bottom-40 right-4 sm:right-10
+          text-gray-400/20 dark:text-gray-600/30 text-3xl
+          animate-float-fast
+          select-none
+        "
         style={{ animationDelay: '0.3s' }}
         aria-hidden="true"
-      />
+      >
+        *
+      </div>
+
+      {/* Parênteses () */}
+      <div
+        className="
+          absolute top-2/3 left-8 sm:left-16
+          text-gray-400/20 dark:text-gray-600/30 text-xl
+          font-mono
+          animate-float-medium
+          select-none
+        "
+        style={{ animationDelay: '1.2s' }}
+        aria-hidden="true"
+      >
+        ( )
+      </div>
+
+      {/* Barra dupla // comentário */}
+      <div
+        className="
+          absolute bottom-1/3 left-4 sm:left-10
+          text-gray-400/25 dark:text-gray-600/35 text-base
+          font-mono
+          animate-float-slow
+          select-none
+        "
+        style={{ animationDelay: '1.8s' }}
+        aria-hidden="true"
+      >
+        //
+      </div>
+
+      {/* Colchetes [] */}
+      <div
+        className="
+          absolute top-1/4 right-6 sm:right-16
+          text-gray-400/20 dark:text-gray-600/30 text-lg
+          font-mono
+          animate-float-fast
+          select-none
+        "
+        style={{ animationDelay: '0.6s' }}
+        aria-hidden="true"
+      >
+        [ ]
+      </div>
     </>
   );
 }
